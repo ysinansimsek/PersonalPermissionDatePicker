@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PersonalPermission.Models.TblPersonal>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Personel İzin Listesi</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("İsim")
+
+        </th>
+        <th>
+            @Html.Label("Soy İsim")
+        </th>
+        <th>
+            @Html.Label("Şehir")
+        </th>
+        <th>
+            @Html.Label("İzin Başlangıç Tarihi")
+        </th>
+        <th>
+            @Html.Label("İzin Bitiş Tarihi")
+        </th>
+        <th>
+            @Html.Label("İzin Türü")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TblPermission.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { style = "color:orange;" }) |
+                @Html.ActionLink("Detaylar", "Details", new { id = item.Id }, new { style = "color:Blue" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { style = "color:Red" })
+            </td>
+        </tr>
+        
+
+    }
+    
+
+</table>
+<a href="~/Personals/Create">
+    <button class="btn btn-primary">İzin Oluştur</button></a>
+
+<th>
+    <a href="~/Personals/Index">
+        <button class="btn btn-warning">Listele</button>
+    </a>
+</th>
+
